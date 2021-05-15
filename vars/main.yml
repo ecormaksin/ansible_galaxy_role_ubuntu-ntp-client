@@ -1,2 +1,9 @@
 ---
 # vars file for ansible_galaxy_role_ubuntu-ntp-client
+
+timesyncd:
+  file:
+    path: /etc/systemd/timesyncd.conf
+
+ntp:
+  server: ntp.nict.jp

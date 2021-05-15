@@ -6,7 +6,7 @@
   ignore_errors: "{{ ansible_check_mode }}"
   shell:
     cmd: |
-      cat "{{ timesyncd.file.path }}" | grep "#NTP=" >/dev/null
+      cat "{{ timesyncd.file.path }}" | grep "NTP={{ ntp.server }}" >/dev/null
       if [ $? -eq 0 ]; then
         echo "already changed."
       else

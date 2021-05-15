@@ -12,3 +12,10 @@
       else
         sed -i -e "s/#NTP=/NTP={{ ntp.server }}/g" "{{ timesyncd.file.path }}"
       fi
+
+- name: "Set NTP Server to Ubuntu | restart systemd-timesyncd"
+  become: yes
+  ignore_errors: "{{ ansible_check_mode }}"
+  systemd:
+    name: systemd-timesyncd
+    state: restarted
